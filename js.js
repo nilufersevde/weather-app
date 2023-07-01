@@ -1,5 +1,12 @@
 const searchForm = document.querySelector('#searchForm');
+const cityCountryName = document.querySelector(".location");
+const weatherCondition = document.querySelector(".condition");
+const temperature = document.querySelector(".temp");
+const feelsLike = document.querySelector(".feels-like");
+const humidity = document.querySelector(".humidity")
+const windd = document.querySelector(".wind");
 
+//fetching the data when submit the location 
 searchForm.addEventListener('submit', function(event) {
     event.preventDefault(); 
     const searchValue = document.querySelector('.searchBar').value;
@@ -16,7 +23,7 @@ async function fetchWeatherData(location) {
         }
       );
   
-      if (!response.ok) {
+      if (response.status === 400) {
         throw new Error('Unable to fetch weather data');
       }
   
@@ -25,28 +32,39 @@ async function fetchWeatherData(location) {
       // Process the retrieved weather data
       const weatherData = processData(data);
       console.log(weatherData);
+      UI(weatherData.city, weatherData.country, weatherData.temperature, weatherData.feelsLike, weatherData.condition, weatherData.humidity, weatherData.wind )
     } 
 
     catch (error) {
       console.error('Error fetching weather data:', error);
     }
   }
-  
+
 
 function processData(data) {
   // Extract the relevant weather data from the API response
-  const { location, current } = data;
+  const { location, current } = data; //Destructuring assignment
   const weatherData = {
     city: location.name,
     country: location.country,
     temperature: current.temp_c,
     condition: current.condition.text,
-    feels_like:current.feelslike_c,
-    wind:current.wind_mph,
-    humidity:current.humidity,
+    feelsLike: current.feelslike_c,
+    wind: current.wind_mph,
+    humidity: current.humidity,
   };
   return weatherData;
 }
 
+const UI = (city, country, temp, feels, cond, humid, wind) => {
+    cityCountryName.textContent = city +"," +country;
+    weatherCondition.textContent = cond;
+    temperature.textContent = temp;
+    feelsLike.textContent = "Feels like: " + feels + "°";
+    humidity.textContent = "Humidty: " + humid + "%";
+    windd.textContent = "Wind:" + wind +"mp";
+  };
 
-fetchWeatherData('London');
+
+fetchWeatherData('Istanbul');
+
