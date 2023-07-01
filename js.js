@@ -5,6 +5,8 @@ const temperature = document.querySelector(".temp");
 const feelsLike = document.querySelector(".feels-like");
 const humidity = document.querySelector(".humidity")
 const windd = document.querySelector(".wind");
+const degree = document.querySelector(".deg");
+const toggleButton = document.querySelector(".toggle");
 
 //fetching the data when submit the location 
 searchForm.addEventListener('submit', function(event) {
@@ -66,5 +68,21 @@ const UI = (city, country, temp, feels, cond, humid, wind) => {
   };
 
 
-fetchWeatherData('Istanbul');
 
+fetchWeatherData('Istanbul');//when first open the page 
+
+const convertCelsiusToFahrenheit = (celsius) => (celsius * 9) / 5 + 32;
+const convertFahrenheitToCelsius = (fahrenheit) => ((fahrenheit - 32) * 5) / 9;
+toggleButton.addEventListener("click", () => {
+    if (toggleButton.innerHTML === "Display °F") {
+        toggleButton.innerHTML = "Display °C";
+        degree.innerHTML = "°F"
+        temperature.textContent =  convertCelsiusToFahrenheit(temperature.textContent);
+
+    } else {
+        console.log(toggleButton.innerHTML);
+        toggleButton.innerHTML = "Display °F";
+        degree.innerHTML = "°C"
+        temperature.textContent =  convertFahrenheitToCelsius(temperature.textContent);
+            }
+    })
