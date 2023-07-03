@@ -6,31 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <form id="searchForm">
         <div class="search">
-          <span class="add">🔍</span>
-          <input class="searchBar" type="text" value="search city...">
+          <img class="searchimg" src="loupe.png">
+          <input class="searchBar" type="text" placeholder="search city...">
         </div>
     </form>
+    
+    
+        <div class="container">
 
-    <div>
-        <div class="main-weather info">
-            <div class="general-info">
-            <p class="condition"></p>
-            <h1 class="location"></h1>
-            <p class="temp"></p>
-            <span class="deg">°C</span>
-            <button class="toggle">Display °F</button>
+            <div class="general info">
+                <div class="condition"></div>
+                <div class="location"></div>
+            </div>
+
+            <div class="weather info">
+
+                <div class="temp-deg-toggle">
+                    <div class="temp-deg">
+                        <span class="temp"></span>
+                        <span class="deg">°C</span>
+                    </div>
+                    <button class="toggle">Display °F</button>
+                </div>
+
+                <div class="weather-details info">
+                    <p class="feels-like"></p>
+                    <p class="wind"></p>
+                    <p class="humidity"></p>
+                </div>
+
+            </div>   
+
         </div>
 
-        <div class="weather-details info">
-            <p class="feels-like"></p>
-            <p class="wind"></p>
-            <p class="humidity"></p>
+
+
+        <div class="gif" >
+            <img class="gifimg" src="#" />
         </div>
-    </div>
+
     
     <script src="js.js"></script>
 </body>
