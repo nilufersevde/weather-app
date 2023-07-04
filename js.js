@@ -22,7 +22,7 @@ let currentData = null; // Variable to store current weather data
 async function fetchWeatherData(location) {
     try {
       const response = await fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=ce5712ff5978400ca76165010232606&q=${location}`,
+        `https://api.weatherapi.com/v1/forecast.json?key=ce5712ff5978400ca76165010232606&q=${location}`,
         {
           mode: 'cors',
         }
